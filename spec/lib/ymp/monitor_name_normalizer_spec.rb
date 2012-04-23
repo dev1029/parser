@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-describe MonitorNameNormalizer do
-  subject { MonitorNameNormalizer.new }
+describe Ymp::MonitorNameNormalizer do
+  subject { Ymp::MonitorNameNormalizer.new }
 
   it { subject.normalize('LCD Acer AL1916Nb 5ms"').should == 'Acer AL1916Nb' }
 

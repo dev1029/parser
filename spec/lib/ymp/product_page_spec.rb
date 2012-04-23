@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-describe ProductPage do
-  let(:product_page1) { ProductPage.new(product_page_with_big_image) }
-  let(:product_page2) { ProductPage.new(product_page_without_big_image) }
-  let(:product_page3) { ProductPage.new(list_products_page) }
+describe Ymp::ProductPage do
+  let(:product_page1) { Ymp::ProductPage.new(product_page_with_big_image) }
+  let(:product_page2) { Ymp::ProductPage.new(product_page_without_big_image) }
+  let(:product_page3) { Ymp::ProductPage.new(list_products_page) }
 
   it { product_page1.should be_valid }
   it { product_page1.title.should == 'Samsung SyncMaster 943BW' }
