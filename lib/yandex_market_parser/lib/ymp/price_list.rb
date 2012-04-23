@@ -1,5 +1,5 @@
 module Ymp
-  class PriceParser
+  class PriceList
     attr_accessor :xml_path
 
     def initialize(xml_path)

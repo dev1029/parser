@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-describe Ymp::PriceParser do
+describe Ymp::PriceList do
   let(:monitor_category_ids) { [162, 163, 164, 165, 166] }
 
-  let(:price_parser) { Ymp::PriceParser.new price_xml_path }
+  let(:price_parser) { Ymp::PriceList.new price_xml_path }
   let(:categories) { price_parser.categories }
   let(:monitor_offers) { price_parser.offers *monitor_category_ids }
 

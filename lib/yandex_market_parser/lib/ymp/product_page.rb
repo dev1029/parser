@@ -10,9 +10,7 @@ module Ymp
       title_element.text
     end
 
-    def description
-      description_element.map(&:text).join('; ')
-    end
+    alias :to_s :title
 
     def image_url
       a_element ? a_href : img_src
@@ -20,10 +18,6 @@ module Ymp
 
     def valid?
       !!model_info_table_element_exists?
-    end
-
-    def to_s
-      "#{title}"
     end
 
     private
@@ -42,6 +36,13 @@ module Ymp
       def description_element
         document.css description_selector
       end
+
+      def normalized_properties
+        description_element.map(&:text).map(&:strip)
+      end
+
+      alias :properties :normalized_properties
+      public :properties
 
       def span_with_img_selector
         'span.b-model-pictures__big'

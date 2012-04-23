@@ -1,5 +1,5 @@
 module Ymp
-  class YandexMarketSearcher
+  class Searcher
     attr_accessor :keywords
 
     def initialize(keywords)
