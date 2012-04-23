@@ -2,7 +2,10 @@ PATH
   remote: .
   specs:
     yandex_market_parser (0.0.1)
-      rails (~> 3.2.2)
+      httparty
+      nokogiri
+      rails
+      sqlite3
 
 GEM
   remote: http://rubygems.org/
@@ -118,5 +121,4 @@ DEPENDENCIES
   rspec-rails
   shoulda-matchers
   spork
-  sqlite3
   yandex_market_parser!
