@@ -16,6 +16,10 @@ module Ymp
       a_element ? a_href : img_src
     end
 
+    def properties
+      normalized_properties
+    end
+
     def valid?
       !!model_info_table_element_exists?
     end
@@ -40,9 +44,6 @@ module Ymp
       def normalized_properties
         description_element.map(&:text).map(&:strip)
       end
-
-      alias :properties :normalized_properties
-      public :properties
 
       def span_with_img_selector
         'span.b-model-pictures__big'

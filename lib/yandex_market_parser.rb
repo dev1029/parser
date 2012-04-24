@@ -1,5 +1,6 @@
 module YandexMarketParser
   require 'yandex_market_parser/lib/ymp/category'
+  require 'yandex_market_parser/lib/ymp/image'
   require 'yandex_market_parser/lib/ymp/monitor_name_normalizer'
   require 'yandex_market_parser/lib/ymp/offer'
   require 'yandex_market_parser/lib/ymp/price_list'

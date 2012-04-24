@@ -14,6 +14,7 @@ describe Ymp::ProductPage do
       "время отклика 5 мс"
     ]
   }
+
   let(:product_page1) { Ymp::ProductPage.new(product_page_with_big_image) }
   let(:product_page2) { Ymp::ProductPage.new(product_page_without_big_image) }
   let(:product_page3) { Ymp::ProductPage.new(list_products_page) }
