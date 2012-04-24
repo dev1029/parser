@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module Ymp
   class PriceList
     attr_accessor :xml_path

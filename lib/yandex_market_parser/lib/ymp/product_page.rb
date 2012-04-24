@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module Ymp
   class ProductPage
     attr_accessor :document

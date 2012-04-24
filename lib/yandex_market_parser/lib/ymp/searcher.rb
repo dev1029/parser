@@ -1,12 +1,14 @@
 module Ymp
   class Searcher
-    attr_accessor :keywords
+    attr_accessor :keywords, :proxy
 
-    def initialize(keywords)
+    def initialize(keywords, proxy = nil)
       self.keywords = URI.encode(keywords)
+      self.proxy = proxy
     end
 
     delegate :body, :to => :response, :prefix => true
+    delegate :address, :port, :to => :proxy, :prefix => true, :allow_nil => true
 
     private
       def yandex_market_url
@@ -24,7 +26,9 @@ module Ymp
       end
 
       def response
-        HTTParty.get(request_url)
+        HTTParty.get(request_url,
+                     :http_proxyaddr => proxy_address,
+                     :http_proxyport => proxy_port)
       end
   end
 end
