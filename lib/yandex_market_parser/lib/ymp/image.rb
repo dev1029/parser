@@ -26,6 +26,7 @@ module Ymp
       def tempfile
         File.open(file_name, 'wb').tap { |file|
           file.write raw_image
+          file.close
         }
       end
 
