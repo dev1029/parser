@@ -5,6 +5,8 @@ describe Ymp::ProxyList do
 
   before :all do
     @proxy_list = Ymp::ProxyList.new *proxies
+
+    Ymp::Proxy.any_instance.stub(:working?).and_return(true)
   end
 
   it { @proxy_list.proxy.to_s.should == '2.2.2.2:22' }

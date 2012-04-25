@@ -7,12 +7,16 @@ module Ymp
     end
 
     def proxy
-      proxy_list.rotate!.first
+      working_proxies.rotate!.first
     end
 
     private
       def proxy_list
         @proxy_list ||= proxies.flatten.map { |proxy| Proxy.new proxy }
+      end
+
+      def working_proxies
+        @working_proxies ||= proxy_list.select(&:working?)
       end
   end
 end
