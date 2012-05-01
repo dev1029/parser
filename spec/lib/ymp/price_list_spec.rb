@@ -9,6 +9,8 @@ describe Ymp::PriceList do
   let(:categories) { price_parser.categories }
   let(:monitor_offers) { price_parser.offers *monitor_category_ids }
 
+  it { price_parser.exchange_rate.should == 29.7 }
+
   it { categories.first.name.should == 'Процессоры' }
 
   it { monitor_offers.first.category_id.should == 162 }

@@ -20,19 +20,23 @@ module Ymp
       category_ids.any? ? offers_with_category_ids(category_ids) : all_offers
     end
 
+    def exchange_rate
+      document.at_xpath("//currency[@id='USD']").attr('rate').to_f
+    end
+
     alias :to_s :xml_path
 
     private
       def file_content
-        File.open(xml_path).read
+        @file_content ||= File.open(xml_path).read
       end
 
       def document
-        Nokogiri::XML file_content
+        @document ||= Nokogiri::XML(file_content)
       end
 
       def category_nodes
-        document.xpath '//category'
+        @category_node ||= document.xpath('//category')
       end
 
       def category_id(node)
@@ -48,7 +52,7 @@ module Ymp
       end
 
       def offer_nodes
-        document.xpath '//offer'
+        @offer_nodes ||= document.xpath '//offer'
       end
 
       def offer_name(node)
@@ -64,7 +68,7 @@ module Ymp
       end
 
       def all_offers
-        offer_nodes.map { |node|
+        @all_offers ||= offer_nodes.map { |node|
           Offer.new :category_id => offer_category_id(node),
                     :name => offer_name(node),
                     :price => offer_price(node)
