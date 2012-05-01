@@ -8,7 +8,11 @@ module Ymp
     end
 
     delegate :body, :to => :response, :prefix => true
-    delegate :address, :port, :to => :proxy, :prefix => true, :allow_nil => true
+
+    delegate :address, :password, :port, :user, 
+             :to => :proxy, 
+             :prefix => true, 
+             :allow_nil => true
 
     private
       def yandex_market_url
@@ -27,6 +31,8 @@ module Ymp
 
       def response
         HTTParty.get(request_url,
+                     :http_proxyuser => proxy_user,
+                     :http_proxypass => proxy_password,
                      :http_proxyaddr => proxy_address,
                      :http_proxyport => proxy_port)
       end

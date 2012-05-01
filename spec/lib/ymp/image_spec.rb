@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Ymp::Image do
-  subject { Ymp::Image.new 'image_url' }
+  subject { Ymp::Image.new 'http://image.url' }
 
   let(:raw_file) { File.open(subject.file.path).read }
 

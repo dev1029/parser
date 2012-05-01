@@ -1,9 +1,14 @@
 module Ymp
   class Proxy
-    attr_accessor :address, :port
+    attr_accessor :address, :password, :port, :user
 
     def initialize(proxy)
-      self.address, self.port = proxy.split(':')
+      if proxy.match('@')
+        self.user, self.password = proxy.split('@').first.split(':')
+        self.address, self.port = proxy.split('@').last.split(':')
+      else
+        self.address, self.port = proxy.split('@').last.split(':')
+      end
     end
 
     def to_s
@@ -21,6 +26,8 @@ module Ymp
     private
       def test_request
         HTTParty.get 'http://example.com',
+                     :http_proxyuser => user,
+                     :http_proxypass => password, 
                      :http_proxyaddr => address,
                      :http_proxyport => port,
                      :timeout => 10
