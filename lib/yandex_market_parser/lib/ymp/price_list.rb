@@ -62,7 +62,7 @@ module Ymp
       def all_offers
         offer_nodes.map { |node|
           Offer.new :category_id => offer_category_id(node),
-                    :name => normalized_offer_name(offer_name(node))
+                    :name => offer_name(node)
         }
       end
 
@@ -70,10 +70,6 @@ module Ymp
         ids_to_i = ids.flatten.map(&:to_i)
 
         all_offers.select { |offer| ids_to_i.include? offer.category_id }
-      end
-
-      def normalized_offer_name(name)
-        MonitorNameNormalizer.new.normalize name
       end
   end
 end

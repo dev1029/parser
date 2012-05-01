@@ -12,7 +12,7 @@ module Ymp
       title_element.text
     end
 
-    alias :to_s :title
+    #alias :to_s :title
 
     def image_url
       a_element ? a_href : img_src

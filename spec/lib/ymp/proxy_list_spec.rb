@@ -4,7 +4,7 @@ describe Ymp::ProxyList do
   let(:proxies) { ['1.1.1.1:11', '2.2.2.2:22'] }
 
   before :all do
-    @proxy_list = Ymp::ProxyList.new *proxies
+    @proxy_list = Ymp::ProxyList.new proxies
 
     Ymp::Proxy.any_instance.stub(:working?).and_return(true)
   end

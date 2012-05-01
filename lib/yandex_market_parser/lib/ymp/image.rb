@@ -2,10 +2,11 @@ require 'httparty'
 
 module Ymp
   class Image
-    attr_accessor :url
+    attr_accessor :url, :proxy
 
-    def initialize(url)
+    def initialize(url, proxy = nil)
       self.url = url
+      self.proxy = proxy
     end
 
     def file
@@ -30,8 +31,17 @@ module Ymp
         }
       end
 
+      delegate :address, :password, :port, :user,
+               :to => :proxy,
+               :prefix => true,
+               :allow_nil => true
+
       def raw_image
-        HTTParty.get(url).body
+        HTTParty.get(url,
+                     :http_proxyuser => proxy_user,
+                     :http_proxypass => proxy_password, 
+                     :http_proxyaddr => proxy_address,
+                     :http_proxyport => proxy_port).body
       end
   end
 end

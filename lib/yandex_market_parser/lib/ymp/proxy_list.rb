@@ -3,7 +3,7 @@ module Ymp
     attr_accessor :proxies
 
     def initialize(*proxies)
-      self.proxies = proxies
+      self.proxies = proxies.flatten
     end
 
     def proxy
@@ -12,7 +12,7 @@ module Ymp
 
     private
       def proxy_list
-        @proxy_list ||= proxies.flatten.map { |proxy| Proxy.new proxy }
+        @proxy_list ||= proxies.map { |proxy| Proxy.new proxy }
       end
 
       def working_proxies
