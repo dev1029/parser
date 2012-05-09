@@ -55,6 +55,10 @@ module Ymp
         @offer_nodes ||= document.xpath '//offer'
       end
 
+      def offer_id(node)
+        node.attr 'id'
+      end
+
       def offer_name(node)
         node.at_xpath('name').text
       end
@@ -69,7 +73,8 @@ module Ymp
 
       def all_offers
         @all_offers ||= offer_nodes.map { |node|
-          Offer.new :category_id => offer_category_id(node),
+          Offer.new :id => offer_id(node),
+                    :category_id => offer_category_id(node),
                     :name => offer_name(node),
                     :price => offer_price(node)
         }

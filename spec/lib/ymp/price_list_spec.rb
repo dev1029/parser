@@ -13,6 +13,7 @@ describe Ymp::PriceList do
 
   it { categories.first.name.should == 'Процессоры' }
 
+  it { monitor_offers.first.id.should == 58990 }
   it { monitor_offers.first.category_id.should == 162 }
   it { monitor_offers.first.name.should == 'Монитор 17" ViewSonic VA1703WB, 5ms, Analogue, 1280x1024, Cont. 700:1, Brightness 300 cd/m?, TCO03,' }
   it { monitor_offers.first.price.should == 130 }
